@@ -1,0 +1,12 @@
+CREATE DATABASE IF NOT EXISTS animal_db;
+
+CREATE TABLE IF NOT EXISTS animals (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    species VARCHAR(50) NOT NULL,
+    breed VARCHAR(100),
+    sex ENUM('M', 'F') NOT NULL,
+    birth_date DATE,
+    owner_name VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

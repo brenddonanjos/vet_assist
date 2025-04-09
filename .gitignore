@@ -1,0 +1,8 @@
+/services/animal/database/mysql
+/services/animal/database/__pycache__
+/services/medicine/database/mysql
+/services/medicine/database/__pycache__
+/services/professional/database/mysql
+/services/professional/database/__pycache__
+.venv
+__pycache__

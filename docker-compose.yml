@@ -1,0 +1,97 @@
+services:
+  #PROFESSIONAL
+  professional: 
+    build: .
+    image: professional
+    container_name: professional
+    hostname: professional
+    restart: always
+    volumes:
+      - ./services/professional:/app
+    command: python3 /app/service.py
+    ports:
+      - 8000:8000
+    depends_on:
+      - professional_db
+  
+  professional_db:
+    image: mysql:8.0
+    container_name: professional_db
+    hostname: professional_db
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_HOST: localhost
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: professional_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+    volumes:
+      - ./services/professional/database/mysql:/var/lib/mysql
+      - ./services/professional/database/migrations:/docker-entrypoint-initdb.d
+
+  #MEDICINE
+  medicine: 
+    build: .
+    image: medicine
+    container_name: medicine
+    hostname: medicine
+    restart: always
+    volumes:
+      - ./services/medicine:/app
+    command: python3 /app/service.py
+    ports:
+      - 8001:8000
+    depends_on:
+      - medicine_db
+
+  medicine_db:
+    image: mysql:8.0
+    container_name: medicine_db
+    hostname: medicine_db
+    restart: always
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_ROOT_HOST: localhost
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: medicine_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+    volumes:
+      - ./services/medicine/database/mysql:/var/lib/mysql
+      - ./services/medicine/database/migrations:/docker-entrypoint-initdb.d
+
+  #ANIMAL
+  animal: 
+    build: .
+    image: animal
+    container_name: animal
+    hostname: animal
+    restart: always
+    volumes:
+      - ./services/animal:/app
+    command: python3 /app/service.py
+    ports:
+      - 8002:8000
+    depends_on:
+      - animal_db
+
+  animal_db:
+    image: mysql:8.0
+    container_name: animal_db
+    hostname: animal_db
+    restart: always
+    ports:
+      - 3308:3306
+    environment:
+      MYSQL_ROOT_HOST: localhost
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: animal_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+    volumes:
+      - ./services/animal/database/mysql:/var/lib/mysql
+      - ./services/animal/database/migrations:/docker-entrypoint-initdb.d
+

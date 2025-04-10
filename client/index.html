@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Veterinários</title>
+    <link rel="stylesheet" href="index.css" />
+    <script src="professional.js"></script>
+  </head>
+  <body>
+    <!-- CARDS DE STATUS DOS SERVIÇOS -->
+    <h1 class="title">Monitoramento de serviços</h1>
+    <section id="services-status">
+      <div class="card-status" id="professional-card-status">
+        <h3>Serviço Profissionais</h3>
+        <p><i>Porta 8000</i></p>
+        <p class="state">Desconhecido</p>
+      </div>
+      <div class="card-status" id="medicine-card-status">
+        <h3>Serviço Medicamentos</h3>
+        <p><i>Porta 8001</i></p>
+        <p class="state">Desconhecido</p>
+      </div>
+      <div class="card-status" id="animal-card-status">
+        <h3>Serviço Animais</h3>
+        <p><i>Porta 8002</i></p>
+        <p class="state">Desconhecido</p>
+      </div>
+    </section>
+
+    <!-- MENU DE NAVEGAÇÃO ENTRE AS PÁGINAS -->
+    <ul class="tabs">
+      <li class="tab-item active" data-target="content-professional">
+        Profissionais
+      </li>
+      <li class="tab-item" data-target="content-medicine">Medicamentos</li>
+      <li class="tab-item" data-target="content-animal">Animais</li>
+    </ul>
+
+    <!-- SEÇÃO DE PROFISSIONAIS -->
+    <section id="content-professional" class="section-content active">
+      <div class="content-alive">
+        <h1 class="subtitle">PROFISSIONAIS</h1>
+        <h2>Cadastrar novo veterinário</h2>
+
+        <!-- Form do profissional -->
+        <form id="form-professional">
+          <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="crmv">CRMV:</label>
+              <input type="text" id="crmv" name="crmv" required />
+            </div>
+
+            <div class="form-group">
+              <label for="dataNascimento">Data de Nascimento:</label>
+              <input
+                type="date"
+                id="dataNascimento"
+                name="dataNascimento"
+                required
+              />
+            </div>
+          </div>
+
+          <button type="submit">Cadastrar</button>
+        </form>
+
+        <h1>Lista de Veterinários</h1>
+
+        <ul id="professionals-list">
+          <li>
+            <strong>Nome:</strong> Ana Silva<br />
+            <strong>CRMV:</strong> 12345-SP<br />
+            <strong>Data de Nascimento:</strong> 1985-10-20<br />
+            <strong>Data de Cadastro:</strong> 2025-04-09
+          </li>
+        </ul>
+      </div>
+      <div class="content-not-alive">
+        ⚠️ Servidor de Profissionais offline. Tente novamente mais tarde.
+      </div>
+    </section>
+    <!-- SEÇÃO DE MEDICAMENTOS -->
+    <section id="content-medicine" class="section-content">
+      <div class="content-alive">
+        <h1 class="subtitle">MEDICAMENTOS</h1>
+        <h2>Cadastrar novo medicamento</h2>
+
+        <!-- Form do medicamento -->
+        <form id="form-medicine">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nome">Nome:</label>
+              <input type="text" id="nome" name="nome" required />
+            </div>
+
+            <div class="form-group">
+              <label for="quantidade">Quantidade:</label>
+              <input
+                type="number"
+                id="quantidade"
+                name="quantidade"
+                min="1"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="descricao">Descrição:</label>
+            <textarea
+              id="descricao"
+              name="descricao"
+              rows="3"
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fabricante">Fabricante:</label>
+              <input type="text" id="fabricante" name="fabricante" required />
+            </div>
+
+            <div class="form-group">
+              <label for="vencimento">Data de Vencimento:</label>
+              <input type="date" id="vencimento" name="vencimento" required />
+            </div>
+          </div>
+
+          <button type="submit">Cadastrar</button>
+        </form>
+        <h1>Lista de Medicamentos</h1>
+
+        <ul id="medicines-list">
+          <li>
+            <strong>Nome:</strong> Antibiótico Pet<br />
+            <strong>Descrição:</strong> Uso veterinário para infecções
+            respiratórias.<br />
+            <strong>Fabricante:</strong> VetPharma<br />
+            <strong>Data de Vencimento:</strong> 2025-12-01<br />
+            <strong>Quantidade:</strong> 20 unidades
+          </li>
+          <li>
+            <strong>Nome:</strong> Antibiótico Pet<br />
+            <strong>Descrição:</strong> Uso veterinário para infecções
+            respiratórias.<br />
+            <strong>Fabricante:</strong> VetPharma<br />
+            <strong>Data de Vencimento:</strong> 2025-12-01<br />
+            <strong>Quantidade:</strong> 20 unidades
+          </li>
+        </ul>
+      </div>
+      <div class="content-not-alive">
+        ⚠️ Servidor de Medicamentos offline. Tente novamente mais tarde.
+      </div>
+    </section>
+
+    <!-- SEÇÃO DE ANIMAIS -->
+    <section id="content-animal" class="section-content">
+      <div class="content-alive">
+        <h1 class="subtitle">ANIMAIS</h1>
+        <h1>Cadastrar novo animal</h1>
+        <form id="form-animal">
+          <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="especie">Espécie:</label>
+              <input type="text" id="especie" name="especie" required />
+            </div>
+
+            <div class="form-group">
+              <label for="raca">Raça:</label>
+              <input type="text" id="raca" name="raca" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="sexo">Sexo:</label>
+              <select id="sexo" name="sexo" required>
+                <option value="">Selecione</option>
+                <option value="M">Macho</option>
+                <option value="F">Fêmea</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="dataNascimentoAnimal">Data de Nascimento:</label>
+              <input
+                type="date"
+                id="dataNascimentoAnimal"
+                name="dataNascimentoAnimal"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nomeDono">Nome do Dono:</label>
+            <input type="text" id="nomeDono" name="nomeDono" required />
+          </div>
+
+          <button type="submit">Cadastrar</button>
+        </form>
+        <h1>Lista de Animais</h1>
+
+        <ul id="animals-list">
+          <li>
+            <strong>Nome:</strong> Rex<br />
+            <strong>Espécie:</strong> Canina<br />
+            <strong>Raça:</strong> Labrador<br />
+            <strong>Sexo:</strong> Macho<br />
+            <strong>Data de Nascimento:</strong> 2020-03-15<br />
+            <strong>Nome do Dono:</strong> João Silva
+          </li>
+        </ul>
+      </div>
+      <div class="content-not-alive">
+        ⚠️ Servidor de Animais offline. Tente novamente mais tarde.
+      </div>
+    </section>
+  </body>
+</html>

@@ -4,11 +4,21 @@ import mysql.connector
 from mysql.connector import Error
 import datetime
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 
 ALIVE = "True"
 
 app = FastAPI()
 
+#Permitir CORS para acesso via cliente local
+origins = ["*",]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 class Medicine(BaseModel):
     name: str
     description: str
@@ -22,7 +32,7 @@ def get_info():
 
 @app.get("/alive")
 def is_alive():
-  return Response(ALIVE, staus_code=200, media_type="text/plain")
+  return Response(ALIVE, status_code=200, media_type="text/plain")
 
 @app.get("/")
 def get_medicines():

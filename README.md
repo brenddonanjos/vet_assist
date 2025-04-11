@@ -71,13 +71,17 @@ Este serviço oferece funcionalidades para:
 			}		
 			```		
 
+## 📄 Documentação
+Uma collection postman foi disponibilizada na raiz do projeto <b>(Vet Assist.postman_collection.json) </b> para facilitar a estruturação das requisições e testar a aplicação
+
 ## 🚀 Instalação e Execução dos Serviços
 Para instalar essa aplicação o <b>Docker</b> e o <b>docker-compose</b> devem estar corretamente instalados em sua máquina
 
 Certifique-se de manter livre as portas:
 
-	- <b>3306 | 3307 | 3308</b>:  Para os bancos de dados
-	- <b>8000 | 8001 | 8002</b>: Para os serviços
+	- **3306, 3307, 3308**:  Para os bancos de dados
+
+	- **8000, 8001, 8002**: Para os serviços
 
  1. Agora iremos rodar os containers usando o docker compose:
 

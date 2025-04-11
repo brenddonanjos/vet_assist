@@ -95,13 +95,15 @@ docker compose up
 docker-compose up
 ```
 
-Após esse comando, aguarde até os containers serem totalmente construídos. 
+Após esse comando, aguarde até os containers serem totalmente construídos. Essa ação pode demorar até 5 minutos
+
 Os serviços irão iniciar em: 
+
   - http://127.0.0.1:8000  (Profissionais)
   - http://127.0.0.1:8001 (Medicamentos)  
   - http://127.0.0.1:8002 (Animais)
 
-AVISO: 
+⚠️ AVISO ⚠️
 
 Em alguns casos, mesmo com os containers de serviços só iniciarem após os dos bancos, pode acontecer da conexão ser executada antes do container do banco finalizar o build, acarretando uma falha na conexão do serviço com o BD. 
 

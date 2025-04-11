@@ -95,10 +95,21 @@ docker compose up
 docker-compose up
 ```
 
- Após esse comando os serviços irão iniciar em: 
+Após esse comando, aguarde até os containers serem totalmente construídos. 
+Os serviços irão iniciar em: 
   - http://127.0.0.1:8000  (Profissionais)
   - http://127.0.0.1:8001 (Medicamentos)  
   - http://127.0.0.1:8002 (Animais)
+
+AVISO: 
+
+Em alguns casos, mesmo com os containers de serviços só iniciarem após os dos bancos, pode acontecer da conexão ser executada antes do container do banco finalizar o build, acarretando uma falha na conexão do serviço com o BD. 
+
+Nesses casos reinicie o container e o problema será resolvido:
+
+```bash
+docker-compose down && docker-compose up
+```
 
 ##  🖥️ Client da aplicação
 O client da aplicação foi desenvolvido utilizado <b>HTML 5</b>, <b>CSS 3</b> E Javascript <b>ES6</b>, sendo necessário apenas um navegador web para começar a utilizar, preferencialmente o google Chrome.

@@ -1,5 +1,0 @@
-- Ler descrição da atividade no classroom 
-- Elencar atividades restantes
-
-
-+ Retorno em json

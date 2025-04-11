@@ -79,9 +79,10 @@ Para instalar essa aplicação o <b>Docker</b> e o <b>docker-compose</b> devem e
 
 Certifique-se de manter livre as portas:
 
-	- **3306, 3307, 3308**:  Para os bancos de dados
+  - **3306, 3307, 3308**:  Para os bancos de dados
 
-	- **8000, 8001, 8002**: Para os serviços
+  - **8000, 8001, 8002**: Para os serviços
+
 
  1. Agora iremos rodar os containers usando o docker compose:
 
@@ -96,18 +97,13 @@ docker-compose up
 
  Após esse comando os serviços irão iniciar em: 
   - http://127.0.0.1:8000  (Profissionais)
-   - http://127.0.0.1:8001 (Medicamentos)  
-   - http://127.0.0.1:8002 (Animais)
+  - http://127.0.0.1:8001 (Medicamentos)  
+  - http://127.0.0.1:8002 (Animais)
 
 ##  🖥️ Client da aplicação
 O client da aplicação foi desenvolvido utilizado <b>HTML 5</b>, <b>CSS 3</b> E Javascript <b>ES6</b>, sendo necessário apenas um navegador web para começar a utilizar, preferencialmente o google Chrome.
 
-Navegue até o diretório do client:
-```bash
-/client
-```
-
-Abra o arquivo <b>index.html </b> em um navegador padrão.
+Navegue até o diretório do cliente <b>/client</b> e abra o arquivo <b>index.html </b> em um navegador padrão.
 
 O frontend se resume em uma tela geral, composta pela seguinte estrutura:
  1. A primeira seção é disposta por 3 cars, representando o status dos 3 serviços. A cada 5 segundos uma requisição é feita para a rota <b>/alive </b> de cada serviço para verificar seus status de atividade, após isso os cards são atualizados conforme o resultado.

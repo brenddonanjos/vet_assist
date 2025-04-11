@@ -1,12 +1,13 @@
 from fastapi import FastAPI, Response
 import uvicorn
+import json
 import mysql.connector
 from mysql.connector import Error
 import datetime
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 
-ALIVE = "True"
+ALIVE = True
 
 app = FastAPI()
 
@@ -27,11 +28,11 @@ class Professional(BaseModel):
 
 @app.get("/info")
 def get_info():
-  return  Response("Serviço de profissionais rodando na porta 8000", status_code=200, media_type="text/plain")
+  return  Response(json.dumps({"message": "Serviço de profissionais rodando na porta 8000"}), status_code=200, media_type="application/json")
 
 @app.get("/alive")
 def is_alive():
-  return Response(ALIVE, status_code=200, media_type="text/plain")
+  return Response(json.dumps({"alive": ALIVE}), status_code=200, media_type="application/json")
 
 @app.get("/")
 def get_professionals():
@@ -40,18 +41,19 @@ def get_professionals():
   if connection:
     try:
       cursor = connection.cursor()
-      cursor.execute("SELECT * FROM professionals")
+      cursor.execute("SELECT * FROM professionals ORDER BY created_at DESC")
       professionals = cursor.fetchall()
 
       cursor.close()
       connection.close()
 
+      return professionals if professionals else []
+    
     except Error as e:
-      print("Erro ao executar a consulta:", e)
-      
-    return professionals if professionals else []
+      return Response(json.dumps({"message": f"Erro ao executar a consulta de profissionais. Erro: {e} "}), status_code=500, media_type="application/json")
+    
   else:
-    return {"error": "Não foi possível conectar ao banco de dados"}
+    return Response(json.dumps({"message": "Não foi possível conectar ao banco de dados de profissionais"}), status_code=500, media_type="application/json")
   
 @app.post("/")
 def create_professional(professional: Professional):
@@ -65,27 +67,27 @@ def create_professional(professional: Professional):
 
       cursor.close()
       connection.close()
-      return {"message": "Profissional criado com sucesso!"}
+      return Response(json.dumps({"message": "Profissional criado com sucesso!"}), status_code=201, media_type="application/json")
     except Error as e:
-      return {"error": "Falha ao registrar profissional", "message": str(e)}
+      return Response(json.dumps({"message": f"Erro ao registrar profissional. Erro: {e} "}), status_code=500, media_type="application/json")
   else:
-    return {"error": "Não foi possível conectar ao banco de dados"}
+    return Response(json.dumps({"message": "Não foi possível conectar ao banco de dados de profissionais"}), status_code=500, media_type="application/json")
 
 #Conexão com banco de dados
 def conn():
     try:
-        connection = mysql.connector.connect(
-            host="professional_db",
-            user="user",
-            password="user",
-            database="professional_db"
-        )
-        if connection.is_connected():
-            print("Conexão com o banco de dados estabelecida!")
-            return connection
+      connection = mysql.connector.connect(
+          host="professional_db",
+          user="user",
+          password="user",
+          database="professional_db"
+      )
+      if connection.is_connected():
+          print("Conexão com o banco de dados estabelecida!")
+          return connection
     except Error as e:
-        print("Erro ao conectar no banco:", e)
-    return None
+      print("Erro ao conectar no banco:", e)
+      return None
 
 if __name__ == "__main__":
   uvicorn.run("service:app", host="0.0.0.0", port=8000, reload=True)

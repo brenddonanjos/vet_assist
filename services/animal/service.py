@@ -1,12 +1,13 @@
 from fastapi import FastAPI, Response
 import uvicorn
+import json
 import mysql.connector
 from mysql.connector import Error
 import datetime
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 
-ALIVE = "True"
+ALIVE = True
 
 app = FastAPI()
 
@@ -29,11 +30,13 @@ class Animal(BaseModel):
 
 @app.get("/info")
 def get_info():
-  return  Response("Serviço de animais rodando na porta 8002", status_code=200, media_type="text/plain")
+  return  Response(json.dumps({"message": "Serviço de animais rodando na porta 8002"}), status_code=200, media_type="application/json")
 
 @app.get("/alive")
 def is_alive():
-  return Response(ALIVE, status_code=200, media_type="text/plain")
+  {"alive": ALIVE}
+  
+  return Response(json.dumps({"alive": ALIVE}), status_code=200, media_type="application/json")
 
 @app.get("/")
 def get_animals():
@@ -42,17 +45,18 @@ def get_animals():
   if connection:
     try:
       cursor = connection.cursor()
-      cursor.execute("SELECT * FROM animals")
+      cursor.execute("SELECT * FROM animals ORDER BY created_at DESC")
       animals = cursor.fetchall()
 
       cursor.close()
       connection.close()
+      return animals if animals else []
+    
     except Error as e:
-      print("Erro ao executar a consulta:", e)
+      return Response(json.dumps({"message": f"Erro ao executar a consulta. Erro: {e} "}), status_code=500, media_type="application/json")
 
-    return animals if animals else []
   else:
-    return {"error": "Não foi possível conectar ao banco de dados"}
+    return Response(json.dumps({"message": "Não foi possível conectar ao banco de dados"}), status_code=500, media_type="application/json")
 
 @app.post("/")
 def create_animal(animal: Animal):
@@ -68,11 +72,11 @@ def create_animal(animal: Animal):
 
       cursor.close()
       connection.close()
-      return {"message": "Animal criado com sucesso!"}
+      return Response(json.dumps({"message": "Animal criado com sucesso!"}), status_code=201, media_type="application/json")
     except Error as e:
-      return {"error": "Falha ao registrar animal", "message": str(e)}
+      return Response(json.dumps({"message": f"Erro ao registrar animal. Erro: {e} "}), status_code=500, media_type="application/json")
   else: 
-    return {"error": "Não foi possível conectar ao banco de dados"}
+    return Response(json.dumps({"message": "Não foi possível conectar ao banco de dados"}), status_code=500, media_type="application/json")
 
 #Conexão com banco de dados
 def conn():

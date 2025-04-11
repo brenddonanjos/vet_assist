@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cadastro de Veterinários</title>
     <link rel="stylesheet" href="index.css" />
-    <script src="professional.js"></script>
+    <script src="index.js"></script>
   </head>
   <body>
     <!-- CARDS DE STATUS DOS SERVIÇOS -->
@@ -46,40 +46,50 @@
         <!-- Form do profissional -->
         <form id="form-professional">
           <div class="form-group">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" required />
+            <label for="professional-name">Nome:</label>
+            <input
+              type="text"
+              id="professional-name"
+              name="professional-name"
+              required
+            />
           </div>
 
           <div class="form-row">
             <div class="form-group">
-              <label for="crmv">CRMV:</label>
-              <input type="text" id="crmv" name="crmv" required />
+              <label for="professional-crmv">CRMV:</label>
+              <input
+                type="text"
+                id="professional-crmv"
+                name="professional-crmv"
+                required
+              />
             </div>
 
             <div class="form-group">
-              <label for="dataNascimento">Data de Nascimento:</label>
+              <label for="professional-birth-date">Data de Nascimento:</label>
               <input
                 type="date"
-                id="dataNascimento"
-                name="dataNascimento"
+                id="professional-birth-date"
+                name="professional-birth-date"
                 required
               />
             </div>
           </div>
 
-          <button type="submit">Cadastrar</button>
+          <button type="button" class="blue" id="btn-professional-register">
+            Cadastrar
+          </button>
         </form>
+        <hr />
+        <div class="content-title">
+          <h1>Lista de Veterinários</h1>
+          <button type="button" class="green" id="btn-professional-list">
+            Atualizar lista
+          </button>
+        </div>
 
-        <h1>Lista de Veterinários</h1>
-
-        <ul id="professionals-list">
-          <li>
-            <strong>Nome:</strong> Ana Silva<br />
-            <strong>CRMV:</strong> 12345-SP<br />
-            <strong>Data de Nascimento:</strong> 1985-10-20<br />
-            <strong>Data de Cadastro:</strong> 2025-04-09
-          </li>
-        </ul>
+        <ul id="professionals-list"></ul>
       </div>
       <div class="content-not-alive">
         ⚠️ Servidor de Profissionais offline. Tente novamente mais tarde.
@@ -95,16 +105,21 @@
         <form id="form-medicine">
           <div class="form-row">
             <div class="form-group">
-              <label for="nome">Nome:</label>
-              <input type="text" id="nome" name="nome" required />
+              <label for="medicine-name">Nome:</label>
+              <input
+                type="text"
+                id="medicine-name"
+                name="medicine-name"
+                required
+              />
             </div>
 
             <div class="form-group">
-              <label for="quantidade">Quantidade:</label>
+              <label for="medicine-quantity">Quantidade:</label>
               <input
                 type="number"
-                id="quantidade"
-                name="quantidade"
+                id="medicine-quantity"
+                name="medicine-quantity"
                 min="1"
                 required
               />
@@ -112,10 +127,10 @@
           </div>
 
           <div class="form-group">
-            <label for="descricao">Descrição:</label>
+            <label for="medicine-description">Descrição:</label>
             <textarea
-              id="descricao"
-              name="descricao"
+              id="medicine-description"
+              name="medicine-description"
               rows="3"
               required
             ></textarea>
@@ -123,19 +138,42 @@
 
           <div class="form-row">
             <div class="form-group">
-              <label for="fabricante">Fabricante:</label>
-              <input type="text" id="fabricante" name="fabricante" required />
+              <label for="medicine-manufacturer">Fabricante:</label>
+              <input
+                type="text"
+                id="medicine-manufacturer"
+                name="medicine-manufacturer"
+                required
+              />
             </div>
 
             <div class="form-group">
-              <label for="vencimento">Data de Vencimento:</label>
-              <input type="date" id="vencimento" name="vencimento" required />
+              <label for="medicine-expiration-date">Data de Vencimento:</label>
+              <input
+                type="date"
+                id="medicine-expiration-date"
+                name="medicine-expiration-date"
+                required
+              />
             </div>
           </div>
 
-          <button type="submit">Cadastrar</button>
+          <button class="blue" id="btn-medicine-register" type="button">
+            Cadastrar
+          </button>
         </form>
-        <h1>Lista de Medicamentos</h1>
+        <hr />
+        <div class="content-title">
+          <h1>Lista de Medicamentos</h1>
+          <button
+            class="green"
+            id="btn-medicine-list"
+            width="100px"
+            type="button"
+          >
+            Atualizar lista
+          </button>
+        </div>
 
         <ul id="medicines-list">
           <li>
@@ -168,26 +206,36 @@
         <h1>Cadastrar novo animal</h1>
         <form id="form-animal">
           <div class="form-group">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" required />
+            <label for="animal-name">Nome:</label>
+            <input type="text" id="animal-name" name="animal-name" required />
           </div>
 
           <div class="form-row">
             <div class="form-group">
-              <label for="especie">Espécie:</label>
-              <input type="text" id="especie" name="especie" required />
+              <label for="animal-species">Espécie:</label>
+              <input
+                type="text"
+                id="animal-species"
+                name="animal-species"
+                required
+              />
             </div>
 
             <div class="form-group">
-              <label for="raca">Raça:</label>
-              <input type="text" id="raca" name="raca" required />
+              <label for="animal-breed">Raça:</label>
+              <input
+                type="text"
+                id="animal-breed"
+                name="animal-breed"
+                required
+              />
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
-              <label for="sexo">Sexo:</label>
-              <select id="sexo" name="sexo" required>
+              <label for="animal-sex">Sexo:</label>
+              <select id="animal-sex" name="animal-sex" required>
                 <option value="">Selecione</option>
                 <option value="M">Macho</option>
                 <option value="F">Fêmea</option>
@@ -195,24 +243,43 @@
             </div>
 
             <div class="form-group">
-              <label for="dataNascimentoAnimal">Data de Nascimento:</label>
+              <label for="animal-birth-date">Data de Nascimento:</label>
               <input
                 type="date"
-                id="dataNascimentoAnimal"
-                name="dataNascimentoAnimal"
+                id="animal-birth-date"
+                name="animal-birth-date"
                 required
               />
             </div>
           </div>
 
           <div class="form-group">
-            <label for="nomeDono">Nome do Dono:</label>
-            <input type="text" id="nomeDono" name="nomeDono" required />
+            <label for="animal-owner-name">Nome do Dono:</label>
+            <input
+              type="text"
+              id="animal-owner-name"
+              name="animal-owner-name"
+              required
+            />
           </div>
 
-          <button type="submit">Cadastrar</button>
+          <button class="blue" type="button" id="btn-animal-register">
+            Cadastrar
+          </button>
         </form>
-        <h1>Lista de Animais</h1>
+
+        <hr />
+        <div class="content-title">
+          <h1>Lista de Animais</h1>
+          <button
+            class="green"
+            id="btn-animal-list"
+            width="100px"
+            type="button"
+          >
+            Atualizar lista
+          </button>
+        </div>
 
         <ul id="animals-list">
           <li>

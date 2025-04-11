@@ -11,14 +11,6 @@ h2 {
 label {
   font-weight: bold;
 }
-#content-not-alive {
-  display: none;
-  color: red;
-  font-weight: bold;
-  text-align: center;
-  font-size: 18px;
-  margin-top: 2rem;
-}
 .title {
   text-align: center;
   margin-bottom: 2rem;
@@ -125,11 +117,19 @@ label {
   display: block;
 }
 
+
+#content-not-alive {
+  display: none;
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  font-size: 18px;
+  margin-top: 2rem;
+}
 /*FORMULÁRIOS DE CADASTRO*/
 form {
   background-color: #fff;
   border-radius: 12px;
-  max-width: 700px;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -156,10 +156,10 @@ select {
   box-sizing: border-box;
 }
 
-button[type="submit"] {
+button {
   padding: 1rem;
-  background-color: #3a86ff;
   color: white;
+  font-size: 16px;
   font-weight: bold;
   border: none;
   border-radius: 8px;
@@ -167,9 +167,29 @@ button[type="submit"] {
   transition: background-color 0.2s ease;
 }
 
-button[type="submit"]:hover {
+.blue {
+  background-color: #3a86ff;
+}
+
+.green {
+  background-color: #4caf50;
+}
+
+button.blue:hover {
   background-color: #265dc2;
 }
+
+button.green:hover {
+  background-color: #2e7d32;
+}
+
+.content-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
 .form-row {
   display: flex;
   gap: 1rem;

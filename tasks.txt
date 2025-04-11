@@ -1,16 +1,5 @@
 - Ler descrição da atividade no classroom 
 - Elencar atividades restantes
 
-+ Desenvolver aplicação cliente
 
-+ Listar profissionais
-+ Cadastrar profissionais
-
-+ Listar medicamentos
-+ Cadastrar medicamentos
-
-+ Listar animais
-+ Cadastrar animais
-
-+ Controle de server offline lógico e físico (código e container off)
-
++ Retorno em json

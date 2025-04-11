@@ -1,4 +1,4 @@
-<p  align="center"><img  src="https://portal.ifba.edu.br/prodin/inagens/marcas/vitoria-da-conquista.png/@@images/82946ed2-0bb1-4737-9609-63d852086bb0.png"  width="160"></p>
+<p  align="center"><img  src="/assets/ifba-brand.png"  width="160"></p>
 
 <h1  align="center"> Vet Assist</h1>
 <p  align="center">Bem vindo ao Vet Assist!<br/>Sistema para a demonstração de funcionalidade de uma aplicação orientada a serviços. Desenvolvido como atividade avaliativa da disciplina de <b>Desenvolvimento de Aplicações Orientadas a Serviços .</b></p>
@@ -75,6 +75,7 @@ Este serviço oferece funcionalidades para:
 Para instalar essa aplicação o <b>Docker</b> e o <b>docker-compose</b> devem estar corretamente instalados em sua máquina
 
 Certifique-se de manter livre as portas:
+
 	- <b>3306 | 3307 | 3308</b>:  Para os bancos de dados
 	- <b>8000 | 8001 | 8002</b>: Para os serviços
 
